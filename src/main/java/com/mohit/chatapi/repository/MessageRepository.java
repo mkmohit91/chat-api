@@ -3,7 +3,12 @@ package com.mohit.chatapi.repository;
 import com.mohit.chatapi.entity.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class MessageRepository {
@@ -16,5 +21,14 @@ public class MessageRepository {
             return jdbcTemplate.update(insertMsgQry, message.getEmail(), message.getContent()) > 0;
         }
         return false;
+    }
+
+    public List<Message> getMessages(){
+        String selectQuery = "SELECT * FROM MESSAGES";
+
+        return jdbcTemplate.query(
+                selectQuery, (rs,rowNum) -> new Message(rs.getString("id"),
+                       rs.getString("email"),
+                       rs.getString("message")));
     }
 }
