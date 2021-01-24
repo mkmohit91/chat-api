@@ -1,8 +1,16 @@
 package com.mohit.chatapi.entity;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 public class Message {
     private String id;
+
+    @NotBlank
+    @Email
     private String email;
+
+    @NotBlank
     private String content;
 
     public Message(String email, String content) {

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class MessagesController {
     private MessageRepository repository;
 
     @PostMapping("/messages")
-    public String saveMessage(@RequestBody Message message){
+    public String saveMessage(@Valid @RequestBody Message message){
         boolean isSuccessfull = repository.saveMessage(message);
         return isSuccessfull ? "OK" : "NOT_OK";
     }
