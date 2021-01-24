@@ -26,7 +26,7 @@ function MessageBoard({setMessageList, messageList}) {
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">Your Messages</label>
-                        <textarea className="form-control" rows="3"
+                        <textarea className="form-control" rows="3" maxLength={500}
                             value={message} onChange={e => setMessage(e.target.value)}/>
                     </div>
                     <div className={styles.actionButtons}>

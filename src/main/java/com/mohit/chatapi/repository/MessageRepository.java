@@ -24,7 +24,7 @@ public class MessageRepository {
     }
 
     public List<Message> getMessages(){
-        String selectQuery = "SELECT * FROM MESSAGES";
+        String selectQuery = "SELECT * FROM MESSAGES order by id desc";
 
         return jdbcTemplate.query(
                 selectQuery, (rs,rowNum) -> new Message(rs.getString("id"),
