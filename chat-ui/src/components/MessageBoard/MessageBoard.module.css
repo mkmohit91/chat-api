@@ -1,9 +1,6 @@
 .MessageBoard {
     margin-top: 40px;
 }
-.fullWidth {
-    width: 100%;
-}
 
 .actionButtons{
     display: flex;

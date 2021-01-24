@@ -1,13 +1,16 @@
 import styles from './MessageBoard.module.css';
 import {useState} from 'react'
 import {postMessage} from '../../services/message.service';
-function MessageBoard() {
+function MessageBoard({setMessageList, messageList}) {
     let [email, setEmail] = useState('');
     let [message, setMessage] = useState('');
     let submitData = formData => {
         postMessage(formData);
         setMessage('');
         setEmail('');
+        const email = formData.email, content = formData.message;
+        let newMessages = [{email, content}, ...messageList];
+        setMessageList(newMessages);
     }
     return (
         <div className={['container', styles.MessageBoard].join(' ')}>
@@ -15,7 +18,7 @@ function MessageBoard() {
                 <h4>Message Board</h4>
             </div>
             <div className={'row'}>
-                <form className={styles.fullWidth}>
+                <form className={'fullWidth'}>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Email address</label>
                         <input type="email" className="form-control" placeholder="name@example.com"
