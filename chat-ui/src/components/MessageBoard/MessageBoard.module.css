@@ -1,0 +1,11 @@
+.MessageBoard {
+    margin-top: 40px;
+}
+.fullWidth {
+    width: 100%;
+}
+
+.actionButtons{
+    display: flex;
+    justify-content: flex-end;
+}
